@@ -1,0 +1,362 @@
+print("""Crypto Cube Game
+Developed by Yalzeee""")
+# This is the Crypto-Cube encryption game developed by yalzeee
+#First things first I print the intructions on how to use the encryption program
+print("""Enter 
+\'U\' or \'U1\' to move the top of the cube
+\'R\' or \'R1\'to move the right of the cube
+\'L\' or \'L1\'to move the left of the cube
+\'D\' or \'D1\'to move the bottom of the cube
+\'F\' or \'F1\'to move the front of the cube and
+\'B\' or \'B1\'to move the back of the cube
+""")
+import random  
+#I import the random class so i can make an automatic encryption method
+#Define the message within each cube
+#For this program i will be using two cubes because message i want to encrypt is "Sololearnyalzeee" which is 16 characters
+cube_1 = {"000":"s",
+ "010":"o",
+  '110':"l", 
+  '100':"o", 
+  '001':"l",
+  '011':"e",
+  '111':"a", 
+  '101':"r"}
+cube_2 = {'000':"n",
+ '010':"y",
+ '110':"a",
+ '100':"l",
+ '001':"z",
+ '011':"e", 
+ '111':"e", 
+ '101':"e"}
+#Define a function to print my code in a orderly manner
+
+def print_orderly(dict):
+  return print(dict["000"] + dict["010"] +  dict["110"] + dict["100"] + dict["001"] + dict["011"] + dict["111"] + dict["101"])
+#Test it out
+print_orderly(cube_1)
+#Define the rotation function
+def rotation(command, cube):
+  decryption_key = []
+  x = command
+  databank = [cube["000"], cube["010"], cube["110"], cube["100"], cube["001"], cube["011"], cube["111"], cube["101"]]  
+  if x == str("F"):
+    cube['000'] = databank[3]
+    cube['010'] = databank[0]
+    cube['110'] = databank[1]
+    cube['100'] = databank[2]
+    decryption_key += "U1"
+  elif x == str("R"):
+    cube['110'] = databank[3]
+    cube['101'] = databank[6]
+    cube['111'] = databank[2]
+    cube['100'] = databank[7]
+    decryption_key += "R1"
+  elif x == str("U"):
+    cube['011'] = databank[1]
+    cube['010'] = databank[2]
+    cube['110'] = databank[6]
+    cube['111'] = databank[5]
+    decryption_key += 'U1'
+  elif x == str("L"):
+    cube['000'] = databank[1]
+    cube['010'] = databank[5]
+    cube['011'] = databank[4]
+    cube['001'] = databank[0]
+    decryption_key += "L1"
+  elif x == str("D"):
+    cube['000'] = databank[4]
+    cube['101'] = databank[3]
+    cube['001'] = databank[7]
+    cube['100'] = databank[0]
+    decryption_key += "D1"
+  elif x == str("B"):
+    cube['101'] = databank[4]
+    cube['011'] = databank[6]
+    cube['111'] = databank[7]
+    cube['001'] = databank[5]
+    decryption_key += "B1"
+  elif x == str("U1"):
+    cube['011'] = databank[6]
+    cube['010'] = databank[5]
+    cube['110'] = databank[1]
+    cube['111'] = databank[2]
+    decryption_key += "U"
+  elif x == str("F1"):
+    cube['000'] = databank[1]
+    cube['010'] = databank[2]
+    cube['110'] = databank[3]
+    cube['100'] = databank[0]
+    decryption_key += "F"
+  elif x == str("R1"):
+    cube['110'] = databank[6]
+    cube['101'] = databank[3]
+    cube['111'] = databank[7]
+    cube['100'] = databank[2]
+    decryption_key += "R"
+  elif x == str("L1"):
+    cube['000'] = databank[4]
+    cube['010'] = databank[0]
+    cube['011'] = databank[1]
+    cube['001'] = databank[5]
+    decryption_key += "L"
+  elif x == str("B1"):
+    cube['101'] = databank[6]
+    cube['011'] = databank[4]
+    cube['111'] = databank[5]
+    cube['001'] = databank[7]
+    decryption_key += "B"
+  elif x == str("D1"):
+    cube['000'] = databank[3]
+    cube['101'] = databank[4]
+    cube['001'] = databank[0]
+    cube['100'] = databank[7]
+    decryption_key += "D"
+  else:
+    print("Error, Invalid Command")
+  return decryption_key
+#Use this function to automatedly encrypt the cube
+def random_encrypt(cube):
+  key = input("Enter the encryption key") ["U","R","L","D","F","B","U1","R1","L1","D1","F1","B1"]
+  a = random.choice(key)
+  b = random.choice(key)
+  c = random.choice(key)
+  d = random.choice(key)
+  e = random.choice(key)      
+  f = random.choice(key)
+  g = random.choice(key)
+  h = random.choice(key)
+  
+  rotation(a,cube)
+  rotation(b,cube)
+  rotation(c,cube)
+  rotation(d,cube)
+  rotation(e,cube)
+  rotation(f,cube)
+  rotation(g,cube)
+  rotation(h,cube)
+  encryption = [h,g,f,e,d,c,b,a]
+  print
+  return encryption
+  
+#You still have to figure out how you're going to make the user interface for the decryption process.
+key = random_encry
+def decrypt(encryption, cube):
+  if encryption[0] == "U":
+    rotation("U1",cube)
+  elif encryption[0] == "F":
+    rotation("F1",cube)
+  elif encryption[0] == "R":
+    rotation("R1",cube)
+  elif encryption[0] == "L":
+    rotation("L1",cube)
+  elif encryption[0] == "B":
+    rotation("B1",cube)
+  elif encryption[0] == "D":
+    rotation("D1",cube)
+  elif encryption[0] == "B1":
+    rotation("B",cube)
+  elif encryption[0] == "U1":
+    rotation("U",cube)
+  elif encryption[0] == "F1'":
+    rotation("F",cube)
+  elif encryption[0] == "D1'":
+    rotation("D",cube)
+  elif encryption[0] == "R1'":
+    rotation("R",cube)
+  elif encryption[0] == "L1'":
+    rotation("L",cube) 
+  else:
+    print("One of your inputs is wrong bruh")
+    if encryption[1] == "U":
+      rotation("U1",cube)
+    elif encryption[1] == "F":
+      rotation("F1",cube)
+    elif encryption[1] == "R":
+      rotation("R1",cube)
+    elif encryption[1] == "L":
+      rotation("L1",cube)
+    elif encryption[1] == "B":
+      rotation("B1",cube)
+    elif encryption[1] == "D":
+      rotation("D1",cube)
+    elif encryption[1] == "B1":
+      rotation("B",cube)
+    elif encryption[1] == "U1":
+      rotation("U",cube)
+    elif encryption[1] == "F1'":
+      rotation("F",cube)
+    elif encryption[1] == "D1'":
+      rotation("D",cube)
+    elif encryption[1] == "R1'":
+      rotation("R",cube)
+    elif encryption[1] == "L1'":
+      rotation("L",cube) 
+    else:
+      print("One of your inputs is wrong bruh")
+      if encryption[2] == "U":
+        rotation("U1",cube)
+      elif encryption[2] == "F":
+        rotation("F1",cube)
+      elif encryption[2] == "R":
+        rotation("R1",cube)
+      elif encryption[2] == "L":
+        rotation("L1",cube)
+      elif encryption[2] == "B":
+        rotation("B1",cube)
+      elif encryption[2] == "D":
+        rotation("D1",cube)
+      elif encryption[2] == "B1":
+        rotation("B",cube)
+      elif encryption[2] == "U1":
+        rotation("U",cube)
+      elif encryption[2] == "F1'":
+        rotation("F",cube)
+      elif encryption[2] == "D1'":
+        rotation("D",cube)
+      elif encryption[2] == "R1'":
+        rotation("R",cube)
+      elif encryption[2] == "L1'":
+        rotation("L",cube) 
+      else:
+        print("One of your inputs is wrong bruh")
+        if encryption[3] == "U":
+          rotation("U1",cube)
+        elif encryption[3] == "F":
+          rotation("F1",cube)
+        elif encryption[3] == "R":
+          rotation("R1",cube)
+        elif encryption[3] == "L":
+          rotation("L1",cube)
+        elif encryption[3] == "B":
+          rotation("B1",cube)
+        elif encryption[3] == "D":
+          rotation("D1",cube)
+        elif encryption[3] == "B1":
+          rotation("B",cube)
+        elif encryption[3] == "U1":
+          rotation("U",cube)
+        elif encryption[3] == "F1'":
+          rotation("F",cube)
+        elif encryption[3] == "D1'":
+          rotation("D",cube)
+        elif encryption[3] == "R1'":
+          rotation("R",cube)
+        elif encryption[3] == "L1'":
+          rotation("L",cube) 
+        else:
+          print("One of your inputs is wrong bruh")
+          if encryption[4] == "U":
+            rotation("U1",cube)
+          elif encryption[4] == "F":
+            rotation("F1",cube)
+          elif encryption[4] == "R":
+            rotation("R1",cube)
+          elif encryption[4] == "L":
+            rotation("L1",cube)
+          elif encryption[4] == "B":
+            rotation("B1",cube)
+          elif encryption[4] == "D":
+            rotation("D1",cube)
+          elif encryption[4] == "B1":
+            rotation("B",cube)
+          elif encryption[4] == "U1":
+            rotation("U",cube)
+          elif encryption[4] == "F1'":
+            rotation("F",cube)
+          elif encryption[4] == "D1'":
+            rotation("D",cube)
+          elif encryption[4] == "R1'":
+            rotation("R",cube)
+          elif encryption[4] == "L1'":
+            rotation("L",cube) 
+          else:
+            print("One of your inputs is wrong bruh")
+            if encryption[5] == "U":
+              rotation("U1",cube)
+            elif encryption[5] == "F":
+              rotation("F1",cube)
+            elif encryption[5] == "R":
+              rotation("R1",cube)
+            elif encryption[5] == "L":
+              rotation("L1",cube)
+            elif encryption[5] == "B":
+              rotation("B1",cube)
+            elif encryption[5] == "D":
+              rotation("D1",cube)
+            elif encryption[5] == "B1":
+              rotation("B",cube)
+            elif encryption[5] == "U1":
+              rotation("U",cube)
+            elif encryption[5] == "F1'":
+              rotation("F",cube)
+            elif encryption[5] == "D1'":
+              rotation("D",cube)
+            elif encryption[5] == "R1'":
+              rotation("R",cube)
+            elif encryption[5] == "L1'":
+              rotation("L",cube) 
+            else:
+              print("One of your inputs is wrong bruh")
+              if encryption[6] == "U":
+                rotation("U1",cube)
+              elif encryption[6] == "F":
+                rotation("F1",cube)
+              elif encryption[6] == "R":
+                rotation("R1",cube)
+              elif encryption[6] == "L":
+                rotation("L1",cube)
+              elif encryption[6] == "B":
+                rotation("B1",cube)
+              elif encryption[6] == "D":
+                rotation("D1",cube)
+              elif encryption[6] == "B1":
+                rotation("B",cube)
+              elif encryption[6] == "U1":
+                rotation("U",cube)
+              elif encryption[6] == "F1'":
+                rotation("F",cube)
+              elif encryption[6] == "D1'":
+                rotation("D",cube)
+              elif encryption[6] == "R1'":
+                rotation("R",cube)
+              elif encryption[6] == "L1'":
+                rotation("L",cube) 
+              else:
+                print("One of your inputs is wrong bruh")
+                if encryption[7] == "U":
+                  rotation("U1",cube)
+                elif encryption[7] == "F":
+                  rotation("F1",cube)
+                elif encryption[7] == "R":
+                  rotation("R1",cube)
+                elif encryption[7] == "L":
+                  rotation("L1",cube)
+                elif encryption[7] == "B":
+                  rotation("B1",cube)
+                elif encryption[7] == "D":
+                  rotation("D1",cube)
+                elif encryption[7] == "B1":
+                  rotation("B",cube)
+                elif encryption[7] == "U1":
+                  rotation("U",cube)
+                elif encryption[7] == "F1'":
+                  rotation("F",cube)
+                elif encryption[7] == "D1'":
+                  rotation("D",cube)
+                elif encryption[7] == "R1'":
+                  rotation("R",cube)
+                elif encryption[7] == "L1'":
+                  rotation("L",cube) 
+                else:
+                  print("One of your inputs is wrong bruh")
+
+random_encrypt(cube_1)
+
+print_orderly(cube_1)
+
+decrypt(key, cube_1)
+
+print_orderly(cube_1)
+
