@@ -137,11 +137,11 @@ def random_encrypt(cube):
   rotation(g,cube)
   rotation(h,cube)
   encryption = [h,g,f,e,d,c,b,a]
-  print
+  print(encryption)
   return encryption
   
 #You still have to figure out how you're going to make the user interface for the decryption process.
-key = random_encry
+key = input("Enter your encryption key")
 def decrypt(encryption, cube):
   if encryption[0] == "U":
     rotation("U1",cube)
