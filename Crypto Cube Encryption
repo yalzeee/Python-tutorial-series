@@ -352,11 +352,37 @@ def decrypt(encryption, cube):
                 else:
                   print("One of your inputs is wrong bruh")
 
-random_encrypt(cube_1)
-
-print_orderly(cube_1)
-
-decrypt(key, cube_1)
-
-print_orderly(cube_1)
+#Next thing we need to do is to make a more standard user interface a way to change the message within the cube.
+# Define a function message
+def message():
+  input = str(input("What message do you want to encrypt"))
+  if len(input) > 16
+    print("Your message is: %s"% len(input) + "characters")
+    if len(input)%8 == 0:
+      x = str(len(input)/8)
+      print("Your message will be encrypted within: %s"% x + "cubes")
+    else:
+      x = str((len(input)/8) + 1) 
+      print("Your message will be encrypted within: %s"% x + "cubes")
+   
+  cube1 = {"000":,
+  "010":,
+  '110':, 
+  '100':, 
+  '001':,
+  '011':,
+  '111':, 
+  '101':}
+  
+  letters = input.split(",")
+  
+  cube1['000'] = letters[0]
+  cube1['010'] = letters[1]
+  cube1['110'] = letters[2]
+  cube1['100'] = letters[3]
+  cube1['001'] = letters[4]
+  cube1['011'] = letters[5]
+  cube1['111'] = letters[6]
+  cube1['101'] = letters[7]
+  return cube1
 
