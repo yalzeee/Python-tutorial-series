@@ -1,0 +1,36 @@
+print("""Data collection and management system,
+ developed by yalzeee""")
+#This program is built to manage data for a higher institution 
+#Start by importing functions we will need for this program
+
+
+import datetime
+#This command imports all functioms from the datetime library
+
+#In this institutiom lets assume we have Students, Lecturers and Workers stored in this database
+class Student:
+  
+  
+  def __init__(self,name,gender, age, major):
+    self.name = name
+    self.gender = gender
+    if gender == "Male" or "male":
+      self.gen = "He"
+    elif gender == "Female" or "female":
+      self.gen = "She"
+    else:
+      self.gen = "It"
+    self.age = age
+    time = datetime.datetime.now()
+    self.tor = time
+    self.major = major
+  
+  def student_summary(self):
+    print("%s is a %s student,%s entered this institution at %s years old and was logged onto our systems at %s. %s is here for a %s major" % (self.name, self.gender, self.gen, self.age, self.tor, self.gen, self.major))
+
+    
+  
+amy = Student("Amy White", "Female","18", "Medicine and Surgery")
+yalz = Student("Oyale Peter", "Male", "19", "Linguistics")
+
+print(yalz.student_summary())
