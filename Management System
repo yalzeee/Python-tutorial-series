@@ -22,15 +22,36 @@ class Student:
       self.gen = "It"
     self.age = age
     time = datetime.datetime.now()
-    self.tor = time
+    self.tor = str(time)
     self.major = major
+    self.tuition = 50000
+    tuit = str(self.tuition)
+    self.student_data = open(self.name, "w+")
+    data = [self.gender, self.age, self.tor, self.major, tuit]
+    for dat in data:
+      self.student_data.write(dat)
+    self.student_data.close()
   
   def student_summary(self):
     print("%s is a %s student,%s entered this institution at %s years old and was logged onto our systems at %s. %s is here for a %s major" % (self.name, self.gender, self.gen, self.age, self.tor, self.gen, self.major))
-
-    
+  
+  
+  def update_tuition(self,paid):
+    if paid == int(-paid):
+     self.tuition -= paid
+    if paid == int(+paid):
+     self.tuition += paid
+    x = open(self.name,"a")
+    x.write(str(self.tuition))
+    x.close()
+    return self.tuition
+   
+   
+   
+       
   
 amy = Student("Amy White", "Female","18", "Medicine and Surgery")
 yalz = Student("Oyale Peter", "Male", "19", "Linguistics")
 
-print(yalz.student_summary())
+print(yalz.update_tuition(5000))
+
