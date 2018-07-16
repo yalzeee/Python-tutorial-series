@@ -1,3 +1,4 @@
+
 print("""Data collection and management system,
  developed by yalzeee""")
 #This program is built to manage data for a higher institution 
@@ -5,6 +6,7 @@ print("""Data collection and management system,
 
 
 import datetime
+import re
 #This command imports all functioms from the datetime library
 
 #In this institutiom lets assume we have Students, Lecturers and Workers stored in this database
@@ -47,11 +49,43 @@ class Student:
     return self.tuition
    
    
-   
-       
+class Lecturer:
+  def __init__(self,name,gender,department):  
+    self.name = name
+    self.gender = gender
+    self.department = department   
+    self.salary = 40000
+    self.staff_data = open(self.name, "w+")
+    data = [self.gender, self.department]
+    for dat in data:
+      self.student_data.write(dat)
+    self.student_data.close()
   
+  def compiled_salary(self): 
+    allowance = float(input("What is the compiled allowance"))
+    salary = self.salary + allowance
+    return salary
+  
+  def staff_upgrade(self,level):
+    if level == 1:
+      self.salary = 50000
+    elif level == 2:
+      self.salary == 60000
+    elif level == 3:
+      self.salary == 80000
+    else:
+      print("Invalid Input")
+  
+ 
+
 amy = Student("Amy White", "Female","18", "Medicine and Surgery")
 yalz = Student("Oyale Peter", "Male", "19", "Linguistics")
 
 print(yalz.update_tuition(5000))
+
+
+tunde = Lecturer("Tunde Bajare","Male","Math and Statistics")
+
+
+
 
