@@ -1,0 +1,96 @@
+import pyautogui
+import time
+import numpy
+from PIL import ImageGrab
+
+
+class Coordinates():
+    chromedesktopicon = (334,251)
+    maximizetab = (1230,70)
+    starttyping = (376,402)
+
+def openchrome():
+    pyautogui.doubleClick(Coordinates.chromedesktopicon)
+    time.sleep(1.0)
+def maximizetab():
+    pyautogui.click(Coordinates.maximizetab)
+    time.sleep(4)
+
+def starttyping():
+    pyautogui.click(Coordinates.starttyping)
+    pyautogui.keyDown('w')
+    time.sleep(0.1)
+    pyautogui.keyUp('w')
+    pyautogui.keyDown('w')
+    time.sleep(0.1)
+    pyautogui.keyUp('w')
+    pyautogui.keyDown('w')
+    time.sleep(0.1)
+    pyautogui.keyUp('w')
+    pyautogui.keyDown('.')
+    time.sleep(0.1)
+    pyautogui.keyUp('.')
+    pyautogui.keyDown('s')
+    time.sleep(0.1)
+    pyautogui.keyUp('s')
+    pyautogui.keyDown('t')
+    time.sleep(0.1)
+    pyautogui.keyUp('t')
+    pyautogui.keyDown('e')
+    time.sleep(0.1)
+    pyautogui.keyUp('e')
+    pyautogui.keyDown('e')
+    time.sleep(0.1)
+    pyautogui.keyUp('e')
+    pyautogui.keyDown('m')
+    time.sleep(0.1)
+    pyautogui.keyUp('m')
+    pyautogui.keyDown('i')
+    time.sleep(0.1)
+    pyautogui.keyUp('i')
+    pyautogui.keyDown('t')
+    time.sleep(0.1)
+    pyautogui.keyUp('t')
+    pyautogui.keyDown('.')
+    time.sleep(0.1)
+    pyautogui.keyUp('.')
+    pyautogui.keyDown('c')
+    time.sleep(0.1)
+    pyautogui.keyUp('c')
+    pyautogui.keyDown('o')
+    time.sleep(0.1)
+    pyautogui.keyUp('o')
+    pyautogui.keyDown('m')
+    time.sleep(0.1)
+    pyautogui.keyUp('m')
+    time.sleep(2)
+    pyautogui.keyDown('enter')
+    time.sleep(0.1)
+    pyautogui.keyUp('enter')
+    time.sleep(4)
+def explore():
+    while True:
+        pyautogui.vscroll(-200, x=617, y=281)
+        time.sleep(0.5)
+        key = pyautogui.confirm('Press ok to end this process')
+        if key == 'OK':
+            break
+        else:
+            pyautogui.vscroll(-100, x=617, y=281)
+            time.sleep(2)
+            pyautogui.vscroll(-100, x=617, y=281)
+            time.sleep(2)
+            pyautogui.vscroll(-100, x=617, y=281)
+            time.sleep(2)
+            pyautogui.vscroll(-100, x=617, y=281)
+            time.sleep(2)
+            pyautogui.vscroll(-100, x=617, y=281)
+            time.sleep(2)
+
+def main():
+    openchrome()
+    maximizetab()
+    starttyping()
+    explore()
+
+main()
