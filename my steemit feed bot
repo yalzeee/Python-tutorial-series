@@ -4,20 +4,21 @@ import numpy
 from PIL import ImageGrab
 
 
-class Coordinates():
-    chromedesktopicon = (334,251)
-    maximizetab = (1230,70)
-    starttyping = (376,402)
 
 def openchrome():
-    pyautogui.doubleClick(Coordinates.chromedesktopicon)
-    time.sleep(1.0)
+    chromeIcon = pyautogui.locateCenterOnScreen('C:/Users/ZEOY/Pictures/Screenshots/python/chromeIcon.png')
+    print(chromeIcon)
+    pyautogui.doubleClick(chromeIcon)
+    time.sleep(3.0)
+    return chromeIcon
 def maximizetab():
-    pyautogui.click(Coordinates.maximizetab)
+    maximizebutton = pyautogui.locateCenterOnScreen('C:/Users/ZEOY/Pictures/Screenshots/python/maximize.png')
+    print(maximizebutton)
+    pyautogui.click(maximizebutton)
     time.sleep(4)
+    return maximizebutton
 
 def starttyping():
-    pyautogui.click(Coordinates.starttyping)
     pyautogui.keyDown('w')
     time.sleep(0.1)
     pyautogui.keyUp('w')
@@ -70,27 +71,34 @@ def starttyping():
     time.sleep(4)
 def explore():
     while True:
-        pyautogui.vscroll(-200, x=617, y=281)
-        time.sleep(0.5)
-        key = pyautogui.confirm('Press ok to end this process')
-        if key == 'OK':
-            break
+        key = pyautogui.confirm('Do you want to move to the next page?',buttons=['Yes', 'No'])
+        if key == 'Yes':
+            pyautogui.vscroll(-800, x=617, y=281)
         else:
-            pyautogui.vscroll(-100, x=617, y=281)
-            time.sleep(2)
-            pyautogui.vscroll(-100, x=617, y=281)
-            time.sleep(2)
-            pyautogui.vscroll(-100, x=617, y=281)
-            time.sleep(2)
-            pyautogui.vscroll(-100, x=617, y=281)
-            time.sleep(2)
-            pyautogui.vscroll(-100, x=617, y=281)
-            time.sleep(2)
+            break
+
 
 def main():
-    openchrome()
-    maximizetab()
-    starttyping()
-    explore()
+    x = pyautogui.prompt('Which Browser do you prefer',buttons= ['Chrome','Firefox','Explorer'])
+    if x == 'Chrome':
+        if openchrome() == 'none':
+            print("Cant find chrome")
+        else:
+            if maximizetab() == 'none':
+                print("Cant maximize tab")
+            else:
+                starttyping()
+                explore()
+    elif x == 'Firefox':
+        openfirefox()
+    elif x == 'Explorer':
+        openexplorer()
+    else:
+        pyautogui.alert('Browser not available in program','OOps')
+        
+        
+    
+    
+    
 
 main()
