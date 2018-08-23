@@ -18,3 +18,24 @@ Config.set('Config','Multisample', '0')
 from random import randint
 kivy.clock import Clock
 #This module is important in animating our widgets
+
+
+
+#First thing we Define a widget for the game
+class TetrisGame(Widget):
+    #Importing from the parent Widget
+    pass
+
+#Then we Define our Board or main game area
+class Board(Layout):
+    pass
+
+#Then we define the main app which is the build point for program
+#Fancy way of saying this is where our program runs from
+class TetrisApp(App)
+   def build(self):
+        return TetrisGame()
+
+if __name__=='__main__':
+    TetrisApp.run()
+#And standard python synthax for running our new code
