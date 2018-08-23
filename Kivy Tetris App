@@ -1,0 +1,20 @@
+ from kivy import *
+#The use of this function in this code is to state the required version for kivy for this program to work
+kivy.require('1.9.0')
+from kivy.app import App
+#This is the kivy function that lets us run our app on andriod, ios and other consoles. It is the backbone of your program
+from kivy.uix.widget import Widget
+#Widgets are vital for creating structures and giving commands to these structures in kivy. They come with default canvases for drawing.
+from kivy.uix.label import Label
+# Labels just as their name means are for adding text labels to your program.
+from kivy.uix.boxlayout import BoxLayout
+# Box Layouts are a set of functions that help us determine the structure of our program.
+
+from kivy.config import Config
+# This module is very important for window errors encountered during kivy startups. Without editing this module
+It is common to get errors telling you to upgrade your graphic card. Using these lines of code should prevent that if it comes up
+Config.set('Config','Multisample', '0')
+
+from random import randint
+kivy.clock import Clock
+#This module is important in animating our widgets
