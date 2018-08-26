@@ -20,22 +20,120 @@ kivy.clock import Clock
 #This module is important in animating our widgets
 
 
-
-#First thing we Define a widget for the game
-class TetrisGame(Widget):
-    #Importing from the parent Widget
+class TetrisGame(ScatterLayout):
     pass
 
-#Then we Define our Board or main game area
-class Board(Layout):
-    pass
+    
+    
+class Block1(Widget):
+    vel_x = NumericProperty(0)
+    vel_y = NumericProperty(-5)
+    position = ReferenceListProperty(vel_x,vel_y)
+    def fall(self, pos):
+        self.pos =  Vector(self.position) + self.pos
+        if self.pos[1]==0:
+            self.position[1] = 0
 
-#Then we define the main app which is the build point for program
-#Fancy way of saying this is where our program runs from
-class TetrisApp(App)
-   def build(self):
-        return TetrisGame()
+class Block2(Widget):
+    vel_x = NumericProperty(0)
+    vel_y = NumericProperty(-5)
+    position = ReferenceListProperty(vel_x,vel_y)
+    def fall(self, pos):
+        self.pos =  Vector(self.position) + self.pos
+        if self.pos[1]==0:
+            self.position[1] = 0
+            
+class Block3(Widget):
+    vel_x = NumericProperty(0)
+    vel_y = NumericProperty(-5)
+    position = ReferenceListProperty(vel_x,vel_y)
+    def fall(self, pos):
+        self.pos =  Vector(self.position) + self.pos
+        if self.pos[1]==0:
+            self.position[1] = 0                
 
-if __name__=='__main__':
-    TetrisApp.run()
-#And standard python synthax for running our new code
+class Block4(Widget):
+    vel_x = NumericProperty(0)
+    vel_y = NumericProperty(-5)
+    position = ReferenceListProperty(vel_x,vel_y)
+    def fall(self, pos):
+        self.pos =  Vector(self.position) + self.pos
+        if self.pos[1]==0:
+            self.position[1] = 0        
+
+class Block5(Widget):
+    vel_x = NumericProperty(0)
+    vel_y = NumericProperty(-5)
+    position = ReferenceListProperty(vel_x,vel_y)
+    def fall(self, pos):
+        self.pos =  Vector(self.position) + self.pos
+        if self.pos[1]==0:
+            self.position[1] = 0
+
+class Block6(Widget):
+    vel_x = NumericProperty(0)
+    vel_y = NumericProperty(-5)
+    position = ReferenceListProperty(vel_x,vel_y)
+    def fall(self, pos):
+        self.pos =  Vector(self.position) + self.pos
+        if self.pos[1]==0:
+            self.position[1] = 0
+            
+class TetrisApp(App):
+    def build(self):
+        game = TetrisGame()
+        x = Window.width
+        block1 = Block1(pos=(randint(0,x),Window.height))
+        block2 = Block2(pos=(randint(0,x),Window.height))
+        block3 = Block3(pos=(randint(0,x),Window.height))
+        block4 = Block4(pos=(randint(0,x),Window.height))
+        block5 = Block5(pos=(randint(0,x),Window.height))
+        block6 = Block6(pos=(randint(0,x),Window.height))
+        allblocks = (block1, block2, block3, block4, block5, block6)
+        while game:
+            blockchoice = randint(1,6)
+            if blockchoice == 1:
+                game.add_widget(block1)
+                Clock.schedule_interval(block1.fall,1/60)
+                for i in allblocks:
+                    if block1.collide_widget(i):
+                        block1.position[1] = 0
+            elif blockchoice == 2:
+                game.add_widget(block2)
+                Clock.schedule_interval(block2.fall,1/60)
+                for i in allblocks:
+                    if block2.collide_widget(i):
+                        block2.position[1] = 0
+            elif blockchoice == 3:
+                game.add_widget(block3)
+                Clock.schedule_interval(block3.fall,1/60)
+                for i in allblocks:
+                    if block3.collide_widget(i):
+                        block3.position[1] = 0
+            elif blockchoice == 4:
+                game.add_widget(block4)
+                Clock.schedule_interval(block4.fall,1/60)
+                for i in allblocks:
+                    if block4.collide_widget(i):
+                        block4.position[1] = 0
+            elif blockchoice == 5:
+                game.add_widget(block5)
+                Clock.schedule_interval(block5.fall,1/60)
+                for i in allblocks:
+                    if block5.collide_widget(i):
+                        block5.position[1] = 0
+            elif blockchoice == 6:
+                game.add_widget(block6)
+                Clock.schedule_interval(block6.fall,1/60)
+                for i in allblocks:
+                    if block6.collide_widget(i):
+                        block6.position[1] = 0
+            else:
+                print('this is not possible')
+        return game
+
+if __name__ == '__main__':
+    TetrisApp().run()
+
+
+
