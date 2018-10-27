@@ -1,0 +1,41 @@
+from bs4 import BeautifulSoup
+import requests
+import re
+
+
+def thecrawler(maxpages,movie):
+    page = 1
+    searchnetnaija(movie)
+    while page < maxpages:
+    
+        searchtoxicwap()
+
+
+def searchtoxicwap():
+    url="www.toxicwap.com"
+
+
+def searchnetnaija(movie):
+    search = True
+    while(search):
+        print('This works')
+        url1="http://www.netnaija.com/videos/movies"
+        sourcecode = requests.get(url1)
+        plain_text = sourcecode.text
+        soup = BeautifulSoup(plain_text,'lxml')
+        list = []
+        for link in soup.find_all('a'):
+            lin = link.get('href')
+            
+            list.append(lin)
+        search = False;
+        
+        for dat in list:
+            x = re.search(r'movies',dat)
+            if x:
+                s = r'%s' % movie
+                y = re.search(s,dat)
+                if y:
+                    print(dat)
+
+
